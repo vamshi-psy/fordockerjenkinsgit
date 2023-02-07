@@ -22,8 +22,8 @@ pipeline {
     stage("Create Docker Image") {
       steps {
         echo "************* Creating Docker Image ${VERSION}************* >"
-        sh "docker build -t $IMAGE_NAME:${VERSION} ."
-        sh "docker images"
+        sh "podman build -t $IMAGE_NAME:${VERSION} ."
+        sh "podman images"
         echo '<************* Build completed *************>'
 
       }
@@ -32,13 +32,13 @@ pipeline {
       steps {
 
         echo '<************* Stopping old Container *************>'
-        sh "docker stop $CONTAINER_NAME"
-        sh "docker rm $CONTAINER_NAME"
+        sh "podman stop $CONTAINER_NAME"
+        sh "podman rm $CONTAINER_NAME"
         echo '<************* Old container stopped *************>'
         
         echo '<************* Starting Container *************>'
-        sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
-        sh "docker ps -a"
+        sh "podman run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
+        sh "podman ps -a"
         echo '<************* Container started  *************>'
 
       }
