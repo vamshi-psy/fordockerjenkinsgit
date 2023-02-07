@@ -23,6 +23,7 @@ pipeline {
       steps {
         echo "************* Creating Docker Image ${VERSION}************* >"
         sh "docker build -t $IMAGE_NAME:${VERSION} ."
+        sh "docker images"
         echo '<************* Build completed *************>'
 
       }
@@ -37,6 +38,7 @@ pipeline {
         
         echo '<************* Starting Container *************>'
         sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
+        sh "docker ps -a"
         echo '<************* Container started  *************>'
 
       }
