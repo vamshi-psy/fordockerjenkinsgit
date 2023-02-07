@@ -30,6 +30,10 @@ pipeline {
     stage("Containers Initialization") {
       steps {
 
+        echo '<************* Stopping old Container *************>'
+        sh "docker stop $CONTAINER_NAME"
+        sh "docker rm $CONTAINER_NAME"
+        echo '<************* Old container stopped *************>'
         
         echo '<************* Starting Container *************>'
         sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
