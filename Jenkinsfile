@@ -36,7 +36,7 @@ pipeline {
         echo '<************* Old container stopped *************>'
         
         echo '<************* Starting Container *************>'
-        sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
+        sh "docker run -d --name $CONTAINER_NAME -p 4287:4287 $IMAGE_NAME:${VERSION} "
         echo '<************* Container started  *************>'
 
       }
