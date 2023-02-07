@@ -22,7 +22,7 @@ pipeline {
     stage("Create Docker Image") {
       steps {
         echo "************* Creating Docker Image ${VERSION}************* >"
-        sh "docker build -t $IMAGE_NAME:${VERSION} ."
+        sh "podman build -t $IMAGE_NAME:${VERSION} ."
         echo '<************* Build completed *************>'
 
       }
