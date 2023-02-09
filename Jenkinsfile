@@ -1,7 +1,7 @@
 def CONTAINER_NAME="hello-world"
 def CONTAINER_TAG="latest"
 def IMAGE_NAME="mycontiner"
-#def IMAGE_VERSION
+
 
 
 pipeline {
