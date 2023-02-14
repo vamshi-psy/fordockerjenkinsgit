@@ -3,9 +3,6 @@ def IMAGE_NAME="mycontiner"
 
 pipeline {
   agent any
-    environment {
-        VERSION = buildVersionString()
-    }
   stages {
 
     stage("Containers Initialization") {
