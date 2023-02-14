@@ -6,6 +6,8 @@ pipeline {
     environment {
         VERSION = buildVersionString()
     }
+  stages {
+
     stage("Containers Initialization") {
       steps {
         echo '<************* Starting Container *************>'
@@ -13,6 +15,7 @@ pipeline {
         echo '<************* Container started  *************>'
       }
     }
+  }
 }
 def buildVersionString() {
     return '1.0_' + env.BUILD_NUMBER
