@@ -21,7 +21,7 @@ pipeline {
     stage("Create Docker Image") {
       steps {
         echo "************* Creating Docker Image ${VERSION}************* >"
-        sh "docker build -t $IMAGE_NAME:${VERSION} ."
+        sh "docker build -t $IMAGE_NAME ."
         echo '<************* Build completed *************>'
         
         echo '<************* list docker images *************>'
