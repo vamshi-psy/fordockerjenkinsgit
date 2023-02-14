@@ -1,0 +1,22 @@
+def CONTAINER_NAME="hello-world"
+def IMAGE_NAME="mycontiner"
+
+pipeline {
+  agent any
+    environment {
+        VERSION = buildVersionString()
+    }
+  
+    stage("Containers Initialization") {
+      steps {
+        
+        echo '<************* Starting Container *************>'
+        sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
+        echo '<************* Container started  *************>'
+      }
+    }
+  }
+}
+def buildVersionString() {
+    return '1.0_' + env.BUILD_NUMBER
+}
