@@ -23,23 +23,10 @@ pipeline {
         echo "************* Creating Docker Image ${VERSION}************* >"
         sh "docker build -t $IMAGE_NAME ."
         echo '<************* Build completed *************>'
-        
-        echo '<************* list docker images *************>'
-        sh "docker images"
-        echo '<************* END: list docker images *************>'
-      }
-    }
-    stage("Containers Initialization") {
-      steps {
-        
-        echo '<************* Stopping old Container *************>'
-        sh "docker stop $CONTAINER_NAME"
-        sh "docker rm $CONTAINER_NAME"
-        echo '<************* Old container stopped *************>'
-        
 
       }
     }
+ 
   }
 }
 def buildVersionString() {
