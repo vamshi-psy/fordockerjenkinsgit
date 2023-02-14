@@ -11,12 +11,9 @@ pipeline {
     stage("Containers Initialization") {
       steps {
         echo '<************* Starting Container *************>'
-        sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:${VERSION} "
+        sh "docker run -d --name $CONTAINER_NAME -p 8082:8082 $IMAGE_NAME:latest "
         echo '<************* Container started  *************>'
       }
     }
   }
-}
-def buildVersionString() {
-    return '1.0_' + env.BUILD_NUMBER
 }
